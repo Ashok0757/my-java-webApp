@@ -44,7 +44,17 @@ public class register extends HttpServlet {
 		doGet(request, response);
 		 response.setContentType("text/html;charset=UTF-8");
 	        PrintWriter out = response.getWriter();
+
+	        String port = System.getenv("PORT");
+	        if (port == null || port.isEmpty()) {
+	            port = "8080"; // Default fallback
+	        }
 	        
+	        out.println("<html><body>");
+	        out.println("<h2>Server running on port: " + port + "</h2>");
+	        out.println("</body></html>");
+	        
+	        System.out.println("Server running on port: " + port);
 	        // Get form parameters
 	        String name = request.getParameter("name");
 	        String dob = request.getParameter("dob");
