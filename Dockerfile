@@ -1,7 +1,12 @@
-FROM tomcat:11.0-jdk17
+# Use Maven to build the application first
+FROM maven:3.8.5-openjdk-17 AS builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package
 
-# Copy the WAR file to the Tomcat webapps directory
-COPY target/CandidateInfo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+# Use Tomcat to run the built WAR file
+FROM tomcat:11.0-jdk17
+COPY --from=builder /app/target/CandidateInfo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose the new port
 EXPOSE 8096
