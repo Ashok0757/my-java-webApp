@@ -12,8 +12,8 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 	<servlet>
-    <servlet-name>Register</servlet-name>
-    <servlet-class>Register</servlet-class>
+    <servlet-name>register</servlet-name>
+    <servlet-class>register</servlet-class>
     <multipart-config>
         <max-file-size>10485760</max-file-size>
         <max-request-size>52428800</max-request-size>
@@ -21,7 +21,7 @@
     </multipart-config>
 </servlet>
 <servlet-mapping>
-    <servlet-name>Register</servlet-name>
+    <servlet-name>register</servlet-name>
     <url-pattern>/register</url-pattern>
 </servlet-mapping>
 
